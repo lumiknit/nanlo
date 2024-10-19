@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"declaration": true,
+		"outDir": "./dist",
+		"paths": {
+			"#dokki/*": ["../../dokki/pkg/*"],
+		},
+		"esModuleInterop": true,
+	},
+	"exclude": [
+		"dist",
+		"**/*.test.ts"
+	]
+}

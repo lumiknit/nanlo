@@ -1,0 +1,30 @@
+[package]
+name = "nanlo"
+description = "Small and simple language interpreter"
+version = "0.1.0"
+authors = ["lumiknit <aasr4r4@gmail.com>"]
+
+readme = "https://github.com/lumiknit/nanlo#README.md"
+homepage = "https://github.com/lumiknit/nanlo#README.md"
+repository = "https://github.com/lumiknit/nanlo"
+
+license = "MIT"
+
+edition = "2021"
+
+[workspace]
+
+members = [
+	"dokki",
+]
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[dependencies]
+wasmtime = "25"
+dokki = { path = "./dokki" }
