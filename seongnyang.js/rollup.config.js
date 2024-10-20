@@ -1,34 +1,25 @@
 // rollup.config.ts
 
-import outputSize from 'rollup-plugin-output-size';
-import terser from '@rollup/plugin-terser';
-import typescript from '@rollup/plugin-typescript';
-import wasm from '@rollup/plugin-wasm';
+import outputSize from "rollup-plugin-output-size";
+import rust from "@wasm-tool/rollup-plugin-rust";
+import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
 
 export default {
-  input: 'src/index.ts',
-  output: [
-    {
-      file: 'dist/seongnyang.cjs.js',
-      format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: 'dist/seongnyang.esm.js',
-      format: 'esm',
-      sourcemap: true,
-    },
-    {
-      file: 'dist/seongnyang.iife.js',
-      format: 'iife',
-      sourcemap: true,
-      name: 'seongnyang',
-    },
-  ],
+  input: {
+    index: "ts/index.ts",
+    dokki: "./Cargo.toml",
+  },
+  output: {
+    dir: "dist",
+    sourcemap: true,
+  },
   plugins: [
     outputSize(),
+    rust({
+      inlineWasm: true,
+    }),
     terser(),
     typescript(),
-    wasm(),
   ],
-}
+};

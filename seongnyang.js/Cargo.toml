@@ -1,0 +1,12 @@
+[package]
+name = "seongnyang_js"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wasm-bindgen = "0.2.95"
+dokki = { path = "../dokki" }
+
+[lib]
+crate-type = ["cdylib"]
+path = "rs/lib.rs"
