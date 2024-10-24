@@ -11,27 +11,28 @@ See `/docs` directory.
 ### Dependencies
 
 - Rust
-- wasm-pack
+- wasm-pack (for building web runtime)
   - Install with `cargo install wasm-pack`
-- Node.js and pnpm
+- Node.js and pnpm (for building web runtime)
   - Install with `npm install -g pnpm`
 
 ### Build for Native
 
+The root directory is the project to build for native environment.
+
 ```sh
 # Run cargo build at root directory.
-# It'll automatically link `dokki` the compiler front-end.
+# It'll automatically link `dokki` and `seongnyang` as dependencies.
 cargo build --release
 ```
 
 ### Build for Web
 
-```sh
-# Run wasm-pack build at `seongnyang` directory.
-pushd dokki
-wasm-pack build
-popd
+The `seongnyang.js` directory is the project to build for web environment.
+The directory contains the wrapper for `dokki` to build as a web assembly,
+and the web runtime to run the web assembly.s
 
+```sh
 # Then, build the web runtime at `seongnyang` directory.
 pushd seongnyang.js
 pnpm install

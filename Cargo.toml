@@ -1,6 +1,6 @@
 [package]
 name = "nanlo"
-description = "Small and simple language interpreter"
+description = "Nanlo parser and interpretation runtime"
 version = "0.1.0"
 authors = ["lumiknit <aasr4r4@gmail.com>"]
 
@@ -14,9 +14,7 @@ edition = "2021"
 
 [workspace]
 
-members = [
-	"dokki",
-]
+members = ["dokki", "seongnyang", "seongnyang.js"]
 
 [profile.release]
 strip = true
@@ -26,5 +24,7 @@ codegen-units = 1
 panic = "abort"
 
 [dependencies]
-wasmtime = "25"
 dokki = { path = "./dokki" }
+seongnyang = { path = "./seongnyang" }
+clap = { version = "4.5.20", features = ["derive"] }
+rustyline = "14.0.0"

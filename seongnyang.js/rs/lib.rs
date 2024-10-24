@@ -1,8 +1,23 @@
 use wasm_bindgen::prelude::*;
 
+#[wasm_bindgen]
+struct Context {
+    ctx: dokki::CompileContext,
+}
+
 /// Wrapper for dokki
-pub fn new_context() -> dokki::CompileContext {
-    dokki::new_context()
+#[wasm_bindgen]
+#[allow(private_interfaces)]
+pub fn new_context() -> Context {
+    Context {
+        ctx: dokki::new_context(),
+    }
+}
+
+#[wasm_bindgen]
+#[allow(private_interfaces)]
+pub fn compile(context: Context, source: &str) -> Result<Vec<u8>, String> {
+    dokki::compile(context.ctx, source)
 }
 
 #[wasm_bindgen]
